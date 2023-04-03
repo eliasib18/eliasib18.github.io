@@ -176,6 +176,26 @@ plt.show()
 
 ![image](https://user-images.githubusercontent.com/56804608/229398589-5a9edeb7-3a3e-49c6-abb8-95dda647852b.png)
 
+#### Para la imagen anterior, explica detalladamente que información nos da sobre el dataset.
+
 Este fragmento de código utiliza la técnica de reducción de dimensionalidad t-distributed stochastic neighbor embedding (TSNE) del módulo sklearn.manifold para reducir los datos de validación a dos dimensiones y visualizarlos en un gráfico de dispersión. Primero, se llama a la función TSNE para reducir los datos de validación a dos dimensiones, utilizando una perplexidad de 30. Luego, se crea una figura utilizando la función subplots de Matplotlib con un solo subplot. El código utiliza un bucle for para iterar sobre las etiquetas únicas en el conjunto de entrenamiento y crear una subselección de datos correspondiente a cada etiqueta. Luego, se muestra cada subselección de datos en el gráfico de dispersión utilizando la función scatter de Matplotlib. Cada subselección de datos se representa con un color diferente, y cada color se etiqueta con la etiqueta correspondiente en la leyenda del gráfico.
+
+# 2. Funciones de utilidad
+```
+import scipy as sp
+def dbscan_predict(dbscan_model, X_new, metric=sp.spatial.distance.cosine):
+    # Result is noise by default
+    y_new = np.ones(shape=len(X_new), dtype=int)*-1 
+    # Iterate all input samples for a label
+    for j, x_new in enumerate(X_new):
+        # Find a core sample closer than EPS
+        for i, x_core in enumerate(dbscan_model.components_): 
+            if metric(x_new, x_core) < dbscan_model.eps:
+                # Assign label of x_core to x_new
+                y_new[j] = dbscan_model.labels_[dbscan_model.core_sample_indices_[i]]
+                break
+    return y_new
+```
+En primer lugar, se inicializa un array y_new de forma (nueva longitud de X_new,) y se llena con valores de -1 para indicar que todas las muestras son ruido por defecto. Luego, se itera sobre cada muestra en X_new. Para cada muestra, se itera sobre cada muestra central en dbscan_model.components_, que son las muestras centrales en cada cluster. Si la distancia entre la muestra actual x_new y la muestra central x_core es menor que el umbral dbscan_model.eps, entonces la etiqueta del cluster de la muestra central se asigna a la muestra actual. La función devuelve un array y_new que contiene las etiquetas de cluster asignadas para cada muestra en X_new. Si una muestra no fue asignada a ningún cluster, su etiqueta será -1 (ruido).
 
 # eliasib18.github.io
