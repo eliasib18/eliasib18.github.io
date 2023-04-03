@@ -55,4 +55,34 @@ Un módulo de Python para gestionar advertencias y mensajes de aviso durante la 
 
 ## Nota: Existen múltiples soluciones a este problema, por lo que la solución que mostraremos no es la única.
 
+Empezamos bien con la importación de las librerias a utilizar:
+
+`import numpy as np`
+
+`import matplotlib.pyplot as plt`
+
+`from sklearn.linear_model import LogisticRegression`
+
+`from sklearn.cluster import KMeans, DBSCAN`
+
+`from sklearn.decomposition import PCA`
+
+`from sklearn.manifold import TSNE`
+
+`from sklearn.preprocessing import StandardScaler`
+
+`from sklearn.datasets import load_digits`
+
+`from sklearn.model_selection import train_test_split`
+
+`from sklearn import metrics`
+
+`import warnings`
+
+`warnings.filterwarnings('ignore')`
+
+#Seed
+
+`np.random.seed(202)`
+
 # eliasib18.github.io
