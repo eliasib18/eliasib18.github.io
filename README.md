@@ -171,4 +171,6 @@ for c in labels:
     ax_pca.scatter(plot_data[:, 0], plot_data[:, 1], label=f"Grupo {c}")
 plt.show()
 ```
+Este fragmento de código utiliza la técnica de reducción de dimensionalidad t-distributed stochastic neighbor embedding (TSNE) del módulo sklearn.manifold para reducir los datos de validación a dos dimensiones y visualizarlos en un gráfico de dispersión. Primero, se llama a la función TSNE para reducir los datos de validación a dos dimensiones, utilizando una perplexidad de 30. Luego, se crea una figura utilizando la función subplots de Matplotlib con un solo subplot. El código utiliza un bucle for para iterar sobre las etiquetas únicas en el conjunto de entrenamiento y crear una subselección de datos correspondiente a cada etiqueta. Luego, se muestra cada subselección de datos en el gráfico de dispersión utilizando la función scatter de Matplotlib. Cada subselección de datos se representa con un color diferente, y cada color se etiqueta con la etiqueta correspondiente en la leyenda del gráfico.
+
 # eliasib18.github.io
