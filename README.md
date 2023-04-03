@@ -198,4 +198,62 @@ def dbscan_predict(dbscan_model, X_new, metric=sp.spatial.distance.cosine):
 ```
 En primer lugar, se inicializa un array y_new de forma (nueva longitud de X_new,) y se llena con valores de -1 para indicar que todas las muestras son ruido por defecto. Luego, se itera sobre cada muestra en X_new. Para cada muestra, se itera sobre cada muestra central en dbscan_model.components_, que son las muestras centrales en cada cluster. Si la distancia entre la muestra actual x_new y la muestra central x_core es menor que el umbral dbscan_model.eps, entonces la etiqueta del cluster de la muestra central se asigna a la muestra actual. La función devuelve un array y_new que contiene las etiquetas de cluster asignadas para cada muestra en X_new. Si una muestra no fue asignada a ningún cluster, su etiqueta será -1 (ruido).
 
+# 3. Modelo de agrupamiento
+
+Dados los datos `data_train` con las etiquetas `target_train` definiremos y entrenaremos un algoritmo que identifique los dígitos. 
+
+```
+# Instanciamos la normalización de datos.
+# Comó validación debe estar completamente disjunto de entrenamiento
+# Seleccionamos los valores de normalización usando los datos de entrenamiento
+# y aplicamos la misma normalización a ambos
+scaler = StandardScaler()
+scaler.fit(data_train)
+from sklearn.cluster import DBSCAN
+
+def mi_modelo(X, label):
+    '''
+        args:
+            - X (nd.array): Arreglo de dimensionalidad (N, D) donde D=64 conteniendo las imágenes en forma de vector
+            - label (nd.array, tipo int): Arreglo de dimensionalidad (N,) conteniendo las etiquetas de clase/grupo para cada imagen
+        returns:
+            - model (object): Instancia de clase del modelo entrenado en los datos X normalizados
+    '''
+    # Normalizamos los datos de entrenamiento
+    data = scaler.transform(X)
+
+    # TODO: Entrena el modelo y regresa el modelo entrenado en los datos de entrenamiento.
+    # Entrena tu modelo con los DATOS NORMALIZADOS
+    model = LogisticRegression().fit(X, label)
+
+    return model
+
+def mi_inferencia(modelo, X_val):
+    '''
+        args:
+            - modelo(object): Instancia de la clase del modelo que estés utilizando
+            - X_val(np.ndarray): Arreglo de dimensionalidad (N, D) donde D=64 conteniendo las imágenes en forma de vector
+        returns:
+            - preds(np.ndarray, tipo int): Arreglo de dimensionalidad (N,) conteniendo las predicciones de clase/grupo para cada imagen
+    '''
+    # Normalizamos los datos de validación
+    # El mismos preprocesamiento de datos se aplica a
+    # tanto inferencia como entrenamiento
+    data = scaler.transform(X_val)
+
+    # TODO: Utiliza el modelo para predecir valores para los datos de validación
+    # Regresa las predicciones de tu modelo para X_val.
+    # Aplica inferencia sobre los DATOS NORMALIZADOS
+    preds = modelo.predict(data)
+
+    return preds
+
+# Utilizamos solo los datos de entrenamiento (alta dimensionalidad) para entrenar
+modelo = mi_modelo(data_train, target_train)
+
+# Utilizamos los datos de validacion (alta dimensionalidad) para hacer inferencia
+# con el modelo entrenado
+pred = mi_inferencia(modelo, data_val)
+```
+
 # eliasib18.github.io
