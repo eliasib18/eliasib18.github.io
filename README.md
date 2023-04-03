@@ -337,4 +337,57 @@ Finalmente, se muestra la figura con todas las imágenes representativas por gru
 
 ![image](https://user-images.githubusercontent.com/56804608/229400790-a992513e-d610-49ce-bf97-dc4261038270.png)
 
+## 4.3 (Inferencia) Calculando el accuracy
+
+En el siguiente codigo se calcula una métrica (un valor numérico) para el conjunto de validación donde indicaremos cuantas muestras en promedio clasifica nuestro modelo correctamente.
+
+```
+datos = data_val
+etiquetas = target_val
+predicciones = mi_inferencia(modelo, datos)
+
+# Calculando el "accuracy" promedio
+accuracy = 0
+error = np.zeros(len(etiquetas))
+count = 0
+for i, j in zip(etiquetas, predicciones):
+    if (i == j):
+        accuracy = accuracy + 1
+    else:
+        error[count] = 1
+    count = count + 1
+accuracy = accuracy / len(etiquetas) * 100
+print(f"El accuracy de nuestro modelo es de {accuracy}%")
+
+#Graficando Elementos con Predicciones Erroneas
+n_elements = 3
+idx = np.random.choice(np.where(error==1)[0],n_elements)
+plt.gray()
+fig, axes = plt.subplots(1, n_elements, figsize=(8,4))
+axes = axes.flatten()
+for ax, i in zip(axes, idx):
+    side = np.sqrt(len(data_val[i])).astype('int')
+    img = data[i].reshape((side, side))
+    ax.matshow(img)
+    ax.axis('off')
+    ax.set_title(f"Etiqueta: {etiquetas[i]}, Preddicion: {predicciones[i]}")
+fig.suptitle("Predicciones Erroneas")
+plt.tight_layout()
+plt.show()
+```
+Este código evalúa el rendimiento del modelo de clasificación entrenado en un conjunto de datos de validación y muestra algunas de las imágenes de validación que fueron clasificadas incorrectamente.
+
+Primero, se hace una predicción utilizando el conjunto de datos de validación y se compara con las etiquetas reales utilizando un bucle for. Se cuenta la cantidad de predicciones correctas y se calcula el porcentaje de precisión del modelo.
+
+Luego, se crea un arreglo de ceros de la misma longitud que las etiquetas reales y se identifican los índices de las imágenes que fueron clasificadas incorrectamente. Se seleccionan tres imágenes al azar de ese subconjunto y se muestran junto con su etiqueta real y la predicción del modelo.
+
+# Resultado de la presición de nuestro modelo
+
+![image](https://user-images.githubusercontent.com/56804608/229401194-056204b6-f815-42ae-a2ba-02368e9d6645.png)
+
+# Resultados erroneos
+
+![image](https://user-images.githubusercontent.com/56804608/229401238-c2f75d7c-4f9b-4a24-8830-c5a54a553776.png)
+
+
 # eliasib18.github.io
