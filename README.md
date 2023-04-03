@@ -289,5 +289,10 @@ for group_id in group_pred:
 
 plt.show()
 ```
+Este código toma el modelo entrenado y lo utiliza para realizar inferencias en los datos de validación. Luego, utiliza las predicciones de clase/grupo resultantes para determinar la cantidad de grupos/clases en los datos de validación y genera un gráfico de dispersión en dos dimensiones de los datos de validación reducidos utilizando TSNE. Cada punto en el gráfico representa una imagen en el conjunto de datos de validación y su color indica a qué grupo/clase se le asignó mediante el modelo entrenado.
+
+# Resultado del codigo anterior
+
+![image](https://user-images.githubusercontent.com/56804608/229400326-3657c927-b4fb-4b10-94d0-2f0abfce36dd.png)
 
 # eliasib18.github.io
