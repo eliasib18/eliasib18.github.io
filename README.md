@@ -389,5 +389,23 @@ Luego, se crea un arreglo de ceros de la misma longitud que las etiquetas reales
 
 ![image](https://user-images.githubusercontent.com/56804608/229401238-c2f75d7c-4f9b-4a24-8830-c5a54a553776.png)
 
+# Contestando a las siguientes preguntas:
+
+- ¿Consideras que tu algoritmo ha aprendido algo que tiene sentido?
+    - Si, observando los resultados finales podemos ver predicciones que tienen sentido en base a la definicion del problema.
+- ¿Qué aprendió tu modelo?
+    - Nuestro modelo aprendio a tomar datos de entrada consistiendo en imagenes transformadas a vectores con valores entre 0 y 16, con la finalidad de clasificar cada imagen en uno de los 10 digitos posibles.
+- ¿Cómo podrías generar una métrica para evaluar el rendimiento en validación?
+    - Comparando nuestros resultados predecidos con las etiquetas del data set de validacion. Consideramos un valor de 1 para cada prediccion correcta y un valor de 0 para una prediccion erronea. Con esto podemos calcular el porcentaje total de las predicciones correctas sobre todo el set de validacion.
+- ¿Cuál es el rendimiento de tu modelo en validación? (De preferencia proporciona un número y analízalo)
+    - Obtuvimos un rendimiento de 95.3%, esto implica que nuestro modelo fue capaz de predecir resultados correctos para la gran mayoria del data set.
+- ¿En que situaciones falla?
+    - Cuando la imagen es muy ambigua y de manera visual podria clasificarse como otro digito diferente al de la etiqueta.
+- ¿A que crees que se deba esto?
+    - Esto se debe a la cantidad de informacion para cada dato, en total tenemos 8x8 datos para cada imagen lo cual es muy bajo. Esto puede generar las confusiones para nuestro modelo, ya que se pueden perder propiedades caracteristicas de cada digito. (Ver ejemplos en seccion anterior)
+    - Otro factor es que algunas de los datos tengan etiquetas erroneas, es decir, que el data set tenga informacion incorrecta. (Ver ejemplos en seccion anterior)
+- ¿Cómo podrías mejorarlo?
+    - Entrenando este modelo con un data set que tenga una mayor cantidad de datos y de manera visual los digitos esten mas refinados.
+    - Revisitando cada una de las etiquetas para asegurar que son correctas.
 
 # eliasib18.github.io
