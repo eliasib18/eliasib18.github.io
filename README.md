@@ -122,5 +122,5 @@ Imágenes en rango 16.0, 0.0
 # Dígitos: 10; # Muestras de entrenamiento: 1347; # Variables 64
 # Dígitos: 10; # Muestras de validación: 450; # Variables 64
 ```
-
+En este proyecto las imágenes se entregan como un vector de 64 variables, donde cada elemento corresponde al valor de un pixel. Para visualizar los datos en forma de imagen, es necesario transformarlos a la forma adecuada. En las siguiente celda puedes ver algunas imágenes de ejemplo, así como la forma en que podemos transformar el vector de variables a una matriz de 8x8.
 # eliasib18.github.io
