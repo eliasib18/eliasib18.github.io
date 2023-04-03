@@ -88,4 +88,33 @@ warnings.filterwarnings('ignore')
 np.random.seed(202)
 ```
 
+## 1. Analizando los datos 
+
+Comenzamos leyendo nuestros datos y visualizando algunos ejemplos para analizarlos. En este caso utilizaremos el [digits dataset](https://scikit-learn.org/stable/auto_examples/datasets/plot_digits_last_image.html#sphx-glr-auto-examples-datasets-plot-digits-last-image-py). En este dataset encontrarás 1797 imágenes de 8x8. Cada imagen es un dígito escrito a mano. Primero separaremos los datos en entrenamiento y validación
+
+A continuación el siguiente código carga el conjunto de datos usando la función load_digits del módulo sklearn.datasets. Luego, divide los datos en un conjunto de entrenamiento y un conjunto de validación utilizando la función train_test_split del módulo sklearn.model_selection. La división se realiza de forma aleatoria, utilizando el 25% de los datos para validación y el 75% restante para entrenamiento.
+
+El código también imprime el rango máximo y mínimo de los datos de imagen, así como el número de dígitos únicos en el conjunto de entrenamiento y el número de muestras y variables en ambos conjuntos.
+
+```
+# Cargamos nuestros datos y los separamos en entrenamiento y validación
+data, labels = load_digits(return_X_y=True)
+
+# El 25% de los datos se asignará aleatoriamente a validación
+data_train, data_val, target_train, target_val = train_test_split(
+    data, 
+    labels, 
+    test_size=0.25
+)
+print(f"Imágenes en rango {np.max(data)}, {np.min(data)}")
+
+# Entrenamiento
+(n_samples, n_features), n_digits = data_train.shape, np.unique(target_train).size
+print(f"# Dígitos: {n_digits}; # Muestras de entrenamiento: {n_samples}; # Variables {n_features}")
+
+# Validación
+(n_samples, n_features), n_digits = data_val.shape, np.unique(target_val).size
+print(f"# Dígitos: {n_digits}; # Muestras de validación: {n_samples}; # Variables {n_features}")
+```
+
 # eliasib18.github.io
