@@ -260,5 +260,34 @@ En el fragmento de código anterior se está entrenando un modelo de regresión 
 
 Es importante destacar que se está utilizando la misma normalización de datos para el preprocesamiento tanto en el entrenamiento como en la inferencia.
 
+# 4. Evaluación y análisis de las predicciones
+
+En esta sección incluimos funciones que te permiten visualizar la predicción de tu modelo para el set de validación. Dado que nuestros datos son de alta dimensionalidad (64) necesitamos reducirlos para poder analizar las predicciones. Recuerda que en esta sección solo funcionará si has definido tu modelo correctamente en el método anterior `mi_modelo`. Recuerda que en esta sección nos interesa mostar el rendimiento del modelo en los datos de *validación*.
+
+## 4.1 (Inferencia) Predicciones en baja dimensionalidad
+
+```
+# Llamamos a inferencia de su modelo
+# preds deberá ser de la forma N,1
+# indicando el número al que corresponde cada imagen
+preds = mi_inferencia(modelo, data_val)
+
+# Buscamos la cantidad de grupos/clases que hay en los datos de validación
+group_pred = np.unique(preds)
+n_groups = len(group_pred)
+print(f"Datos {data_val.shape}, predicciones {preds.shape}, clases/grupos {n_groups}")
+
+fig, ax_reduced = plt.subplots(1, 1, figsize=(4,4))
+fig.suptitle("Puntos clasificados reducidos a dos dimensiones")
+
+# Grafícando los datos DE VALIDACIÓN reducidos (reduced_data_val) con un color distinto para cada grupo/clase que nuestro modelo ha predecido (preds)
+
+for group_id in group_pred:
+    idx = np.where(target_val == group_id)
+    plot_data = reduced_data_val[idx]
+    ax_reduced.scatter(plot_data[:, 0], plot_data[:, 1], label=f"Grupo {group_id}")
+
+plt.show()
+```
 
 # eliasib18.github.io
