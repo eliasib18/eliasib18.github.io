@@ -148,6 +148,8 @@ plt.show()
 
 El codigo anterior muestra algunos ejemplos de imágenes del conjunto de entrenamiento utilizando la biblioteca de visualización de Matplotlib. Primero, establece la paleta de colores en escala de grises utilizando la función gray() de Matplotlib. Luego, se eligen al azar tres índices de las muestras de entrenamiento utilizando la función np.random.randint, y se crean tres subplots utilizando la función subplots de Matplotlib. Cada imagen se cambia de forma utilizando la función reshape para que tenga una dimensión de 8x8 píxeles, y se muestra utilizando la función matshow.
 
+## Ejemplo de la salida del codigo:
+
 ![image](https://user-images.githubusercontent.com/56804608/229397489-df1853cd-46f9-453e-b9bc-ab1f7430dc15.png)
 
 # eliasib18.github.io
