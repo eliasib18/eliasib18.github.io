@@ -1,23 +1,58 @@
-# eliasib18.github.io
-# Proyecto 1: Identificando números con imágenes
-En este ejercicio analizaras e identificarás números dados en la forma de imagen. Para ello puedes utilizar tu solución preferida identificar grupos de imágenes similares. Por ejemplo, puedes aplicar reducción de dimensionalidad antes o después del entrenamiento, puedes también elegir no usarlo. Para hacer la predicción puedes hacer uso de un método de agrupamiento y resolver la tarea con aprendizaje no supervisado, o puedes utilizar un algoritmo de clasificación y elegir el camino de aprendizaje supervisado.
-
-A diferencia de los ejercicios anteriores donde programaste las soluciones analíticas a los métodos de ML, en este proyecto se recomienda el uso de las funciones y clases integradas de scikit-learn. Para entender el uso de estas clases y ver algunos ejemplos puedes consultar la documentación oficial
-- [PCA](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html)
-- [TSNE](https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html#sklearn.manifold.TSNE)
-- [KMeans](https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html)
-- [DBScan](https://scikit-learn.org/stable/modules/generated/sklearn.cluster.DBSCAN.html)
-- [LogisticRegression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)
-
-En este proyecto tendrás que elegir que método de reducción de dimensionalidad y que método de agrupamiento deseas aplicar a tus datos. Es tu trabajo analizar la información dada para tomar estas decisiones. Lee con atención todas las instrucciones y celdas de código, y recuerda agregar tu código en todas las partes donde veas la instrucción "`TODO`"
+# Proyecto 1: Identificación de números por medio de imágenes
 
 ## Descripción
-Tu trabajo es identificar grupos en imágenes para reconocimiento de números. Para esto, deberás realizar los siguientes pasos:
+El trabajo consiste en identificar grupos de imágenes para reconocimiento de números. Para esto, se deberán realizar los siguientes pasos:
 1. Dado que nuestros datos están en diferentes escalas, es necesario normalizar los datos.
 2. Aplicar un método de reducción de dimensionalidad y visualizar los datos
 3. Buscar grupos en los datos reducidos con alguna técnica de agrupamiento o clasificación.
 4. Interpretar los resultados.
 5. Dadas dos imágenes nuevas, identificar a que grupo pertenece. (Inferencia)
 
-Nota como existen múltiples soluciones a este problema. La decisión de como resolverlo es tuya (: intenta hacerlo lo mejor posible!
-Comenzamos por importar las librerías correspondientes.
+
+## A continuación se muestran las librerias utilizadas junto con una breve descripción de ellas.
+
+### 1. numpy: 
+Una librería de Python para realizar operaciones matemáticas en matrices y arreglos n-dimensionales.
+
+### 2. matplotlib.pyplot: 
+Una librería de Python para visualizar datos en gráficos y diagramas.
+
+### 3. sklearn.linear_model: 
+Un módulo de la librería scikit-learn para ajustar modelos de regresión lineal y logística.
+
+### 4. sklearn.cluster: 
+Un módulo de la librería scikit-learn para realizar clustering o agrupamiento de datos en grupos similares.
+
+### 5. sklearn.decomposition: 
+Un módulo de la librería scikit-learn para realizar técnicas de reducción de dimensionalidad como PCA (Análisis de Componentes Principales).
+
+### 6. sklearn.manifold: 
+Un módulo de la librería scikit-learn para reducción de dimensionalidad no lineal como t-SNE (t-Distributed Stochastic Neighbor Embedding).
+
+### 7. sklearn.preprocessing: 
+Un módulo de la librería scikit-learn para realizar transformaciones en los datos antes de aplicar modelos de aprendizaje automático, como la estandarización de características.
+
+### 8. sklearn.datasets: 
+Un módulo de la librería scikit-learn que incluye conjuntos de datos de ejemplo para practicar el aprendizaje automático.
+
+### 9. sklearn.model_selection:
+Un módulo de la librería scikit-learn para realizar evaluación de modelos, como la división de los datos en entrenamiento y prueba, y la validación cruzada.
+
+### 10. sklearn.metrics:
+Un módulo de la librería scikit-learn para calcular métricas de evaluación de modelos, como la precisión, el recall y la F1-score.
+
+### 11. warnings: 
+Un módulo de Python para gestionar advertencias y mensajes de aviso durante la ejecución del código. En este caso, se utiliza para desactivar las advertencias en la salida del código.
+
+#### -------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Asi mismo, en este proyecto se recomienda el uso de las funciones y clases integradas de scikit-learn. Para entender el uso de estas clases y ver algunos ejemplos puedes consultar la documentación oficial
+
+- [PCA](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html)
+- [TSNE](https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html#sklearn.manifold.TSNE)
+- [KMeans](https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html)
+- [DBScan](https://scikit-learn.org/stable/modules/generated/sklearn.cluster.DBSCAN.html)
+- [LogisticRegression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)
+
+## Nota: Existen múltiples soluciones a este problema, por lo que la solución que mostraremos no es la única.
+
+# eliasib18.github.io
