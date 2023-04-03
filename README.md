@@ -115,6 +115,12 @@ print(f"# Dígitos: {n_digits}; # Muestras de entrenamiento: {n_samples}; # Vari
 # Validación
 (n_samples, n_features), n_digits = data_val.shape, np.unique(target_val).size
 print(f"# Dígitos: {n_digits}; # Muestras de validación: {n_samples}; # Variables {n_features}")
+
+--> Resultados de las impresiones
+
+Imágenes en rango 16.0, 0.0
+# Dígitos: 10; # Muestras de entrenamiento: 1347; # Variables 64
+# Dígitos: 10; # Muestras de validación: 450; # Variables 64
 ```
 
 # eliasib18.github.io
