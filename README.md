@@ -256,4 +256,9 @@ modelo = mi_modelo(data_train, target_train)
 pred = mi_inferencia(modelo, data_val)
 ```
 
+En el fragmento de código anterior se está entrenando un modelo de regresión logística, utilizando los datos de entrenamiento normalizados y las etiquetas correspondientes a cada imagen. Luego, se está haciendo inferencia con los datos de validación normalizados utilizando el modelo entrenado y se están guardando las predicciones en la variable pred.
+
+Es importante destacar que se está utilizando la misma normalización de datos para el preprocesamiento tanto en el entrenamiento como en la inferencia.
+
+
 # eliasib18.github.io
