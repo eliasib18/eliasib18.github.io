@@ -152,4 +152,23 @@ El codigo anterior muestra algunos ejemplos de imágenes del conjunto de entrena
 
 ![image](https://user-images.githubusercontent.com/56804608/229397489-df1853cd-46f9-453e-b9bc-ab1f7430dc15.png)
 
+## Visualización en baja dimensionalidad
+
+En el siguiente codigo se visualizaran como se ven los datos reduciendo la dimensionalidad de 30 variables a 2. En este caso nosotros usamos TSNE, pues era el que mejor información nos daba a diferencia del PCA.
+
+```
+
+# Reduciendo la dimensionalidad de los datos de validación data_val a 2 dimensiones usando TSNE
+
+reduced_data_val = TSNE(n_components=2, perplexity=30).fit_transform(data_val)
+
+labels = np.unique(target_train)
+fig, ax_pca = plt.subplots(1, 1, figsize=(4,4))
+fig.suptitle("Puntos reducidos a dos dimensiones")
+for c in labels:
+    indices = np.where(target_val == c)
+    plot_data = reduced_data_val[indices]
+    ax_pca.scatter(plot_data[:, 0], plot_data[:, 1], label=f"Grupo {c}")
+plt.show()
+```
 # eliasib18.github.io
