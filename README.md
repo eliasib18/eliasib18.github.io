@@ -222,8 +222,8 @@ def mi_modelo(X, label):
     # Normalizamos los datos de entrenamiento
     data = scaler.transform(X)
 
-    # TODO: Entrena el modelo y regresa el modelo entrenado en los datos de entrenamiento.
-    # Entrena tu modelo con los DATOS NORMALIZADOS
+   # Entrenas el modelo y regresamos el modelo entrenado en los datos de entrenamiento.
+   # Entrenamos nuestro modelo con los DATOS NORMALIZADOS
     model = LogisticRegression().fit(X, label)
 
     return model
@@ -241,7 +241,7 @@ def mi_inferencia(modelo, X_val):
     # tanto inferencia como entrenamiento
     data = scaler.transform(X_val)
 
-    # TODO: Utiliza el modelo para predecir valores para los datos de validación
+    # Utilizando el modelo para predecir valores para los datos de validación
     # Regresa las predicciones de tu modelo para X_val.
     # Aplica inferencia sobre los DATOS NORMALIZADOS
     preds = modelo.predict(data)
