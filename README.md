@@ -122,5 +122,32 @@ Imágenes en rango 16.0, 0.0
 # Dígitos: 10; # Muestras de entrenamiento: 1347; # Variables 64
 # Dígitos: 10; # Muestras de validación: 450; # Variables 64
 ```
+
 En este proyecto las imágenes se entregan como un vector de 64 variables, donde cada elemento corresponde al valor de un pixel. Para visualizar los datos en forma de imagen, es necesario transformarlos a la forma adecuada. En las siguiente celda puedes ver algunas imágenes de ejemplo, así como la forma en que podemos transformar el vector de variables a una matriz de 8x8.
+
+```
+plt.gray()
+
+# Visualizar algunas imágenes
+n_cols = 3
+idx = np.random.randint(len(data_train), size=n_cols)
+fig, axes = plt.subplots(1, n_cols, figsize=(6,3))
+axes = axes.flatten()
+for ax, i in zip(axes, idx):
+    side = np.sqrt(len(data_train[i])).astype('int')
+    # La imagen está dada como un solo vector de longitud 64
+    # Cambiamos la forma para tenerla en forma de imagen de 8x8 pixeles
+    img = data[i].reshape((side, side))
+    ax.matshow(img)
+    ax.axis('off')
+    ax.set_title(f"Etiqueta: {labels[i]}")
+fig.suptitle("Ejemplos de muestras de entrenamiento")
+plt.tight_layout()
+plt.show()
+```
+
+El codigo anterior muestra algunos ejemplos de imágenes del conjunto de entrenamiento utilizando la biblioteca de visualización de Matplotlib. Primero, establece la paleta de colores en escala de grises utilizando la función gray() de Matplotlib. Luego, se eligen al azar tres índices de las muestras de entrenamiento utilizando la función np.random.randint, y se crean tres subplots utilizando la función subplots de Matplotlib. Cada imagen se cambia de forma utilizando la función reshape para que tenga una dimensión de 8x8 píxeles, y se muestra utilizando la función matshow.
+
+![image](https://user-images.githubusercontent.com/56804608/229397489-df1853cd-46f9-453e-b9bc-ab1f7430dc15.png)
+
 # eliasib18.github.io
