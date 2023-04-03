@@ -295,4 +295,46 @@ Este código toma el modelo entrenado y lo utiliza para realizar inferencias en 
 
 ![image](https://user-images.githubusercontent.com/56804608/229400326-3657c927-b4fb-4b10-94d0-2f0abfce36dd.png)
 
+## 4.2 (Inferencia) Visualizar imagenes en cada grupo/clase
+
+El siguiente código llama al método de inferencia anteriormente definido. Se deber mostrar al menos 1 imagen por cada grupo de predicción de tu modelo.
+
+```
+# Llamamos a inferencia de nuestro modelo
+# Este método regresará las clases/grupos que haya encontrado para cada punto de validación
+preds = mi_inferencia(modelo, data_val)
+
+# Clases/grupos distintos de predicciones
+group_pred = np.unique(preds)
+n_groups = len(group_pred)
+
+# Graficar
+n_cols = 5
+fig, axes = plt.subplots(n_groups//n_cols, n_cols, figsize=(10,6))  # Puedes cambiar o eliminar esta linea si lo consideras necesario.
+axes = axes.flatten() # Convertir los axes a lista para poder iterarlos
+# Muestrando una imagen por cada grupo/clase de preddicion
+
+plt.gray()
+for ax, i in zip(axes, group_pred):
+    side = np.sqrt(len(data_train[i])).astype('int')
+    img = data_val[np.where(preds == i)[0][0]].reshape((side, side))
+    ax.matshow(img)
+    ax.axis('off')
+    ax.set_title(f"Numero: {group_pred[i]}")
+
+fig.suptitle("Muestras representativas por grupo")
+plt.tight_layout()
+plt.show()
+```
+
+Este código muestra una imagen representativa por cada grupo/clase de predicción encontrado en los datos de validación.
+
+Primero se llama a la función mi_inferencia para obtener las predicciones de clase/grupo para cada punto de validación. Luego se busca la cantidad de grupos/clases distintos encontrados en las predicciones.
+
+Después se crea una figura con subplots para mostrar las imágenes representativas por grupo. Para cada grupo/clase de predicción, se obtiene la primera imagen correspondiente a ese grupo y se muestra en un subplot. La imagen se obtiene a partir de los datos de validación (data_val) y las predicciones (preds), encontrando el primer punto de validación que pertenece a ese grupo.
+
+Finalmente, se muestra la figura con todas las imágenes representativas por grupo.
+
+![image](https://user-images.githubusercontent.com/56804608/229400790-a992513e-d610-49ce-bf97-dc4261038270.png)
+
 # eliasib18.github.io
